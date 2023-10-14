@@ -116,16 +116,15 @@ const Registration = () => {
                               photoURL: "https://firebasestorage.googleapis.com/v0/b/bpchatnet-279e3.appspot.com/o/avatar.jpg?alt=media&token=83d4b918-dcb7-4c47-97d4-19dbda4c9d1d&_gl=1*5krtlj*_ga*MTEzMzY1MzA1OS4xNjg2OTk0MzI2*_ga_CW55HF8NVT*MTY5Njk1OTU3MC4zLjEuMTY5Njk2MDY4NS4xOC4wLjA."
                           }).then(()=>{
                               sendEmailVerification(auth.currentUser).then(() => {
-                                  navigate("/")
-                                  toast.success('Login Done 😺', {
-                                    position: "bottom-center",
-                                    autoClose: 3000,
-                                    hideProgressBar: false,
-                                    closeOnClick: true,
-                                    pauseOnHover: true,
-                                    draggable: true,
-                                    progress: undefined,
-                                    theme: "dark",
+                                  toast.success('Wow so easy 😺', {
+                                      position: "bottom-center",
+                                      autoClose: 3000,
+                                      hideProgressBar: false,
+                                      closeOnClick: true,
+                                      pauseOnHover: true,
+                                      draggable: true,
+                                      progress: undefined,
+                                      theme: "dark",
                                     });
                                     setTimeout(()=>{
                                         navigate("/")
