@@ -55,9 +55,9 @@ const FriendsRequest = () => {
         <div className="userParrent">
 
           {
-            friendRequestArr.map((item)=>{
+            friendRequestArr.map((item, index)=>{
                 return (
-                    <div className="users">
+                    <div key={index} className="users">
                         <Flex className="user">
                             <Flex className="userLeft">
                                 <div className="userImageDiv">
