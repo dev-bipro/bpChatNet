@@ -17,7 +17,7 @@ const GroupList = () => {
   const db = getDatabase() ;
   const groupRef = ref(db,"groups")
   const sentGroupRef = ref(db,"groupMembersRequest")
-  const groupMembersRef = ref(db,"groupMembers")
+  // const groupMembersRef = ref(db,"groupMembers")
   
   const [groupsArr, setGroupsArr] = useState([]) ;
   const [groupMembersRequestArr, setGroupMembersRequestArr] = useState([]) ;
@@ -69,7 +69,7 @@ const GroupList = () => {
       ...createGroupData,
       [e.target.name] : e.target.value
     })
-    console.log(createGroupData);
+    // console.log(createGroupData);
   }
 
 
@@ -85,7 +85,7 @@ const GroupList = () => {
   }
   
   const sentGroupForMember = (item) => {
-    console.log(item);
+    // console.log(item);
     set(push(sentGroupRef),{
       adminId:item.adminId,
       groupId:item.groupId,
@@ -98,7 +98,7 @@ const GroupList = () => {
     // console.log(item);
     groupMembersRequestArr.map(item => {
       if (item.memberId == logdinData.uid && item.groupId == cancelGid) {
-        console.log(item.reqGroupId);
+        // console.log(item.reqGroupId);
         remove(ref(db,"groupMembersRequest/" + item.reqGroupId))
       }
       // console.log("forT",cancelGid);
