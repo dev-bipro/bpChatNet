@@ -1,0 +1,30 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+ol,ul {
+  list-style: none;
+}
+h1,h2,h3,h4,h5,h6,p{
+  line-height: 0.8;
+}
+
+/* Root Css Part Start */
+:root {
+  --main-color: #5F35F5;
+  --main-text-color: #000;
+  --secondery-text-color: #11175D;
+  --nunito: 'Nunito', sans-serif;
+  --open-sans: 'Open Sans', sans-serif;
+  --poppins: 'Poppins', sans-serif;
+}
+/* Root Css Part End */
+
+/* registration css start */
+
+/* registration css end */
+
+/* registration css start */
+
+
+/* registration css end */
