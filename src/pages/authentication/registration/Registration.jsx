@@ -117,7 +117,7 @@ const Registration = () => {
                           }).then(()=>{
                               sendEmailVerification(auth.currentUser).then(() => {
                                   toast.success('Wow so easy 😺', {
-                                      position: "bottom-center",
+                                      position: "top-left",
                                       autoClose: 3000,
                                       hideProgressBar: false,
                                       closeOnClick: true,

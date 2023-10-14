@@ -70,7 +70,7 @@ const Login = () => {
             email: user.user.email,
             photoURL : user.user.photoURL
           }).then(()=>{
-            toast.success('🦄 Wow so easy!', {
+            toast.success('🦄 Login done!', {
               position: "top-left",
               autoClose: 3000,
               hideProgressBar: false,
@@ -129,7 +129,7 @@ const Login = () => {
                             localStorage.setItem("user",JSON.stringify(user.user))
     
                             toast.success('Login Done 😺', {
-                                position: "bottom-center",
+                                position: "top-left",
                                 autoClose: 3000,
                                 hideProgressBar: false,
                                 closeOnClick: true,
