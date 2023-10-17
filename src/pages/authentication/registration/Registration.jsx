@@ -72,13 +72,14 @@ const Registration = () => {
         // });
 
         if(!formData.fullName || !formData.email || !formData.password){
-            if (!setFormData.fullName) {
+            if (!formData.fullName) {
                 setNameError("please type your name !")
+
             }
-            if (!setFormData.email) {
+            if (!formData.email) {
                 setEmailError("please type your email !")
             }
-            if (!setFormData.password) {
+            if (!formData.password) {
                 setPasswordError("please type your password !")
             }
 
@@ -86,6 +87,9 @@ const Registration = () => {
             const validEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ ;
             
             if (formData.fullName.length > 2 && formData.fullName.split("").find((element) => isNaN(element -1)) && validEmail.test(formData.email) && formData.password.length > 5) {
+
+
+
 
                 setBtnLoad(false)
                 let textForLoad = 'BP is Checking'

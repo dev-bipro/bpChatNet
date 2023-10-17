@@ -93,10 +93,10 @@ const Login = () => {
     const clickHandler = () => {
 
         if(!formData.email || !formData.password){
-            if (!setFormData.email) {
+            if (!formData.email) {
                 setEmailError("please type your email !")
             }
-            if (!setFormData.password) {
+            if (!formData.password) {
                 setPasswordError("please type your password !")
             }
 
@@ -125,9 +125,7 @@ const Login = () => {
                     signInWithEmailAndPassword(auth, formData.email, formData.password).then((user)=>{
                         // console.log(user.user);
                         // if (user.user.emailVerified) {
-                            dispatch(whoLogdin(user.user))
-                            localStorage.setItem("user",JSON.stringify(user.user))
-    
+                            
                             toast.success('Login Done 😺', {
                                 position: "top-left",
                                 autoClose: 3000,
@@ -139,6 +137,8 @@ const Login = () => {
                                 theme: "dark",
                             });
                             setTimeout(()=>{
+                                localStorage.setItem("user",JSON.stringify(user.user))
+                                dispatch(whoLogdin(user.user))
                                 navigate("/home")
                             },3500)
             
@@ -178,17 +178,7 @@ const Login = () => {
 
         
 
-        // signInWithEmailAndPassword(auth, formData.email, formData.password).then((user)=>{
-        //     // console.log(user.user);
-        //     // if (user.user.emailVerified) {
-        //         dispatch(whoLogdin(user.user))
-        //         localStorage.setItem("user",JSON.stringify(user.user))
-        //         navigate("/home")
-
-        //     // }
-
-            
-        // })
+        
     }
   return (
     <>
