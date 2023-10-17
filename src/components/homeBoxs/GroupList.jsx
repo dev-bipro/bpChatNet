@@ -132,8 +132,8 @@ const GroupList = () => {
               <Typography id="modal-modal-title" variant="h6" component="h2">Create Group</Typography>
               <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                 <div className="myGroupModal">
-                  <TextField onChange={changeHandler} name="groupName" className="regInput" type='text' id="outlined-basic" label="Password" variant="outlined" />
-                  <TextField onChange={changeHandler} name="groupTagName" className="regInput" type='text' id="outlined-basic" label="Password" variant="outlined" />
+                  <TextField onChange={changeHandler} name="groupName" className="regInput" type='text' id="outlined-basic" label="Group Name" variant="outlined" />
+                  <TextField onChange={changeHandler} name="groupTagName" className="regInput" type='text' id="outlined-basic" label="Group Tag Name" variant="outlined" />
                   <Button onClick={createGroupHandler} className="regBtn" variant="contained">Create</Button>
 
                 </div>

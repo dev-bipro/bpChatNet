@@ -119,7 +119,7 @@ const MyGroups = () => {
             aria-describedby="modal-modal-description"
           >
             <Box sx={style}>
-              <Typography id="modal-modal-title" variant="h6" component="h2">Create Group</Typography>
+              <Typography id="modal-modal-title" variant="h6" component="h2">{`Group ${openRl ? "Request" : openMl? "Member" : ""} List`}</Typography>
               <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                 <div className="myGroupModal">
                 <div className="userParrent">
