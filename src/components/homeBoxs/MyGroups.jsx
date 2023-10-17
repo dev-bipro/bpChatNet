@@ -201,9 +201,9 @@ const MyGroups = () => {
                             </div>
                         </Flex>
                         <Flex className="userRight">
-                            <Button onClick={() => handleOpenRl(item)} style={{background:"aqua"}} className="userBtn" variant="contained">r l</Button>
+                            <Button onClick={() => handleOpenRl(item)} color="info" className="userBtn" variant="contained">r l</Button>
                     {/* <Button onClick={handleOpen}className="modalBtn" variant="contained">create a new group</Button> */}
-                            <Button onClick={()=>handleOpenMl(item)} className="userBtn" variant="contained">m l</Button>
+                            <Button onClick={()=>handleOpenMl(item)} color="info" className="userBtn" variant="contained">m l</Button>
                         </Flex>
                     </Flex>
                 </div>
