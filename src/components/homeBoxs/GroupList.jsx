@@ -20,6 +20,7 @@ const GroupList = () => {
   // const groupMembersRef = ref(db,"groupMembers")
   
   const [groupsArr, setGroupsArr] = useState([]) ;
+  const [groupJoinArr, setGroupJoinArr] = useState([]) ;
   const [groupMembersRequestArr, setGroupMembersRequestArr] = useState([]) ;
 
   useEffect(()=>{
@@ -39,6 +40,17 @@ const GroupList = () => {
         }
       })
       setGroupMembersRequestArr(arr)
+    })
+    onValue(ref(db,"groupMembers") , (snapshot) =>{
+      const arr = [] ;
+      snapshot.forEach(item => {
+        if (item.val().memberId == logdinData.uid) {
+
+          arr.push(item.val().groupId)
+          // console.log(item.val().groupId);
+        }
+      })
+      setGroupJoinArr(arr)
     })
   },[])
 
@@ -121,7 +133,7 @@ const GroupList = () => {
             <div><BiDotsVertical /></div>
         </Flex>
         <div>
-          <Button onClick={handleOpen}className="modalBtn" variant="contained">create a new group</Button>
+          <Button onClick={handleOpen} className="modalBtn" variant="contained">create a new group</Button>
           <Modal
             open={open}
             onClose={handleClose}
@@ -135,7 +147,6 @@ const GroupList = () => {
                   <TextField onChange={changeHandler} name="groupName" className="regInput" type='text' id="outlined-basic" label="Group Name" variant="outlined" />
                   <TextField onChange={changeHandler} name="groupTagName" className="regInput" type='text' id="outlined-basic" label="Group Tag Name" variant="outlined" />
                   <Button onClick={createGroupHandler} className="regBtn" variant="contained">Create</Button>
-
                 </div>
               </Typography>
             </Box>
@@ -149,19 +160,21 @@ const GroupList = () => {
                 <div key={index} className="users">
                     <Flex className="user">
                         <Flex className="userLeft">
-                            <div className="userImageDiv">
-                                <ImageComp className="userImage" imageSrc={item.groupImage} />
-                            </div>
-                            <div>
-                                <Heading tagName="h5" className="userNameHeading" title={item.groupName}>
-                                    <Pragraph className="userNameSubHeading" title="today 30:300 PM" />
-                                </Heading>
-                            </div>
+                          <div className="userImageDiv">
+                            <ImageComp className="userImage" imageSrc={item.groupImage} />
+                          </div>
+                          <div>
+                            <Heading tagName="h5" className="userNameHeading" title={item.groupName}>
+                              <Pragraph className="userNameSubHeading" title="today 30:300 PM" />
+                            </Heading>
+                          </div>
                         </Flex>
                         <Flex className="userRight">
                           {
                             groupMembersRequestArr.find(el => el.groupId == item.groupId) ?
                               <Button onClick={()=>cancelGroupForMember(item.groupId)} color="error" className="userBtn" variant="contained">cancel</Button>
+                            : groupJoinArr.includes(item.groupId) ?
+                              <Button color="success" className="userBtn" variant="contained">join</Button>
                             : item.adminId == logdinData.uid ?
                               <Button color="success" className="userBtn" variant="contained">my group</Button>
                             :
