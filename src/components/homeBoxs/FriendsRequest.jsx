@@ -35,7 +35,7 @@ const FriendsRequest = () => {
   },[])
 
   const sentFRAccpetHandler =(item) => {
-    set(push(friendsRef),{
+    set(ref(db,"friends/"+(item.reciverId+item.senderId)),{
       ...item
     }).then(()=>{
       remove(ref(db,"friendRequest/"+item.itemId))
