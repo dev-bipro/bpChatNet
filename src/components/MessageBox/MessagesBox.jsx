@@ -3,6 +3,7 @@ import Flex from '../Flex'
 import Heading from '../Heading'
 import Pragraph from '../Pragraph'
 import ImageComp from '../ImageComp'
+import { BiDotsVertical } from 'react-icons/bi'
 
 const MessagesBox = () => {
   return (
@@ -16,6 +17,7 @@ const MessagesBox = () => {
             <Pragraph className="messageHeadingOnline" title="online" />
           </Heading>
         </Flex>
+        <BiDotsVertical />
       </Flex>
     </div>
   )
