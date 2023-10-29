@@ -4,18 +4,22 @@ import Heading from '../Heading'
 import Pragraph from '../Pragraph'
 import ImageComp from '../ImageComp'
 import { BiDotsVertical } from 'react-icons/bi'
+import { useSelector } from 'react-redux'
 
 const MessagesBox = () => {
+  const chatWith = useSelector((state) => state.activeChat.value) ;
   return (
     <div>
       <Flex className="messageHead">
-        <Flex>
+        <Flex className="whoActiveSms">
           <div className="messageImageDiv">
-            <ImageComp imageSrc={""} />
+            <ImageComp className="activeSmsImage" imageSrc={chatWith?.activeImage} />
           </div>
-          <Heading tagName="h2" className="currantMessageName" title={""}>
-            <Pragraph className="messageHeadingOnline" title="online" />
-          </Heading>
+          <div>
+            <Heading tagName="h2" className="currantMessageName" title={chatWith?.activeName}>
+              <Pragraph className="messageHeadingOnline" title="online" />
+            </Heading>
+          </div>
         </Flex>
         <BiDotsVertical />
       </Flex>

@@ -6,13 +6,17 @@ import ImageComp from '../ImageComp'
 import Pragraph from '../Pragraph'
 import Button from '@mui/material/Button';
 import { getDatabase, ref, onValue, set, push, remove } from "firebase/database";
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { activeChatNow } from '../../features/activeChat/activeChat'
+import { whoLogdin } from '../../features/user/logdinSlice'
 
 const Friends = () => {
   const logdinData = useSelector((state) => state.logdin.value)
   const db = getDatabase() ;
   const friendsRef = ref(db,"friends") ;
-  const friendsBlockRef = ref(db,"blockFriends") ;
+  const dispach = useDispatch() ;
+  console.log(useSelector((state) => state.logdin));
+
   const [friendsArr, setFriendsArr] = useState([]) ;
 
   useEffect(()=>{
@@ -34,12 +38,10 @@ const Friends = () => {
     remove(ref(db,"friends/"+itemId))
   }
   const friendBlockHandler = (item) => {
-    console.log(item);
-    console.log(item.reciverId == logdinData.uid);
-    console.log(item.senderId == logdinData.uid);
+    const friendsBlockRef = ref(db,"blockFriends/"+(item.reciverId+item.senderId)) ;
     // console.log(item);
     if (item.reciverId == logdinData.uid) {
-      set(push(friendsBlockRef),{
+      set(friendsBlockRef,{
         blockBy : logdinData.uid,
         blockByImage : logdinData.photoURL,
         blockByName : logdinData.displayName,
@@ -50,7 +52,7 @@ const Friends = () => {
         remove(ref(db,"friends/"+item.itemId))
       })
     }else{
-      set(push(friendsBlockRef),{
+      set(friendsBlockRef,{
         blockBy : logdinData.uid,
         blockByImage : logdinData.photoURL,
         blockByName : logdinData.displayName,
@@ -61,6 +63,27 @@ const Friends = () => {
         remove(ref(db,"friends/"+item.itemId))
       })
       
+    }
+  }
+
+  const activeChatHandler = (item) => {
+    console.log(item);
+    if (item.reciverId == logdinData.uid) {
+      dispach(activeChatNow({
+        type : "single",
+        activeId : item.senderId,
+        activeName : item.senderName,
+        activeImage : item.senderImage,
+      }))
+
+    }else{
+      dispach(activeChatNow({
+        type : "single",
+        activeId : item.reciverId,
+        activeName : item.reciverName,
+        activeImage : item.reciverImage,
+      }))
+
     }
   }
 
@@ -75,7 +98,7 @@ const Friends = () => {
           {
             friendsArr.map((item, index)=>{
               return (
-                <div key={index} className="users">
+                <div key={index} onClick={()=> activeChatHandler(item)} className="users">
                     <Flex className="user">
                         <Flex className="userLeft">
                             <div className="userImageDiv">

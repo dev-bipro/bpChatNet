@@ -12,7 +12,7 @@ const BlockUsers = () => {
   const logdinData = useSelector((state) => state.logdin.value) ;
   const db = getDatabase() ;
   const bolckUserRef = ref(db,"blockFriends") ;
-  const friendsRef = ref(db,"friends") ;
+
 
   const [blockUserArr, setBlockUserArr] = useState([]) ;
 
@@ -32,7 +32,8 @@ const BlockUsers = () => {
   },[])
 
   const unblockHandler = (item) => {
-    set(push(friendsRef),{
+    const friendsRef = ref(db,"friends/"+(logdinData.uid+item.blockTo)) ;
+    set(friendsRef,{
       senderName: logdinData.displayName,
       senderId: logdinData.uid,
       senderImage: logdinData.photoURL,
