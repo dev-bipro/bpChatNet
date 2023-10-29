@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux'
 const MessagesBox = () => {
   const chatWith = useSelector((state) => state.activeChat.value) ;
   return (
-    <div>
+    <div className='messageBoxMain'>
       <Flex className="messageHead">
         <Flex className="whoActiveSms">
           <div className="messageImageDiv">
